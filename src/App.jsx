@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Provider } from "react-redux"
+import Signup from './pages/signup';
+import Dashboard from './pages/dashboard';
+import AdminDashboard from './pages/admin_dashboard';
+import Register from './pages/register';
+import { Provider } from 'react-redux';
 import store from "./redux/store"
-import MainBody from './components/mainbody';
-import NavBar from './components/navbar';
-import Header from './components/header';
-import login from './pages/login';
-
+import Add from './pages/add';
+import Header from "./components/header"
+import Question from './pages/question';
+import TakeQuestion from './pages/takeQuestion';
 
 class RE extends Component {
   componentDidMount(){
-    this.props.history.push("/login")
+    this.props.history.push("/register")
   }
   render() {
     return (
@@ -25,22 +28,46 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-        <NavBar/>
+          <Header/>
+          <Add/>
+          <Question/>
           <Route 
             component={RE}
             path="/"
             exact={true}
           />
-          <MainBody>
-            <Header/>
-            <Route 
-              path="/home"
-            />
-          </MainBody>
-          <Route 
-            component={login}
+          <Route
+            component={Signup}
             path="/login"
             exact={true}
+          />
+          <Route
+            component={Register}
+            path="/register"
+            exact={true}
+          />
+          <Route 
+            component={Dashboard}
+            path="/dashboard"
+            exact={true}
+          />
+          <Route 
+            component={AdminDashboard}
+            path="/admin/dashboard"
+            exact={true}
+          />
+          <Route 
+            component={TakeQuestion}
+            path="/take"
+            exac
+          />
+          <Route 
+            component={TakeQuestion}
+            path="/take/exam"
+          />
+          <Route 
+            component={TakeQuestion}
+            path="/take/test"
           />
         </BrowserRouter>
       </Provider>
