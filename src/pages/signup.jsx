@@ -108,7 +108,7 @@ class Signup extends Component {
             })
         }
     }
-    componentDidMount(){
+    async componentDidMount(){
         let token = await localStorage.getItem("token")
         if (token) {
             this.props.history.push("/dashboard")
